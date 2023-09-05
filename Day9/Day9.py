@@ -24,6 +24,16 @@ for thing in programmingDictionary:
     print(thing) #<--- This will print the key names only. ex: Bug
     print(programmingDictionary[thing]) #<--- This will print only the value. ex:"A moth in your computer."
 
+# You can merge two dictionaries together using |.
+x = {'a': 1, 'b': 2}
+y = {'b': 8, 'c': 9}
+
+z = x | y
+
+# output:
+z = {'a': 1, 'b': 8, 'c': 9,}
+# 'b' is now equal to 8 because when using this function, the same keys will override the value using the second list.
+
 # You can nest lists inside of a dictionary.
 travelLog = {
     "Iceland": ["Reykjavik", "Akureyri", "Isafjordur"],
