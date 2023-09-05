@@ -54,7 +54,7 @@ def dealCards(player, cpu):
 
     print(f"  Your cards: {player}, current score: {playerScore}")
     print(f"  Computer's first card: {cpu[0]}")
-    print(f"  Testing: {cpu} {cpuScore}")
+    # print(f"  Testing: {cpu} {cpuScore}")
 
     return player, cpu
 
@@ -70,6 +70,11 @@ def calculateScores(player, cpu):
     return playerScore, cpuScore
 
 def drawAgain(player, cpu):
+    playerScore = sum(player)
+    cpuScore = sum(cpu)
+    if playerScore == 0 or cpuScore == 0:
+        return player, cpu
+    
     while True:
         askToDrawAgain = str(input("Type 'y' to get another card, type 'n' to pass: "))
         if askToDrawAgain == "y":
@@ -147,10 +152,12 @@ while playingGame == True:
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     player = []
     cpu = []
+
     gameStart()
+
     os.system('cls')
 
-    player, cpu= dealCards(player, cpu)
+    dealCards(player, cpu)
 
     drawAgain(player, cpu)
 
