@@ -19,7 +19,7 @@ def difficulty():
         print("Invalid input, please type 'easy' or 'hard'.")
 
 def randomNumber():
-  randNum = random.randint(1, 101)
+  randNum = random.randint(1, 100)
   # print(f"Testing: {randNum}")
   return randNum
 
