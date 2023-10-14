@@ -1,13 +1,8 @@
-# NOTES--------
-# 1.) Setup Screen✅
-# 2.) Middle line✅
-# 3.) Player✅ and CPU
-# 4.) Ball
-# 5.) Score
-
 from turtle import Turtle, Screen
 from Paddle import Paddle
 from Ball import Ball
+from Scoreboard import Scoreboard
+from GameOver import GameOver
 import time
 
 
@@ -20,10 +15,12 @@ screen.setup(width=WIDTH, height=HEIGHT)
 screen.title("Pong")
 screen.bgcolor("black")
 screen.tracer(0)
+gameover = GameOver()
 leftPaddle = Paddle((WIDTH / -2 + 40, 0))
 rightPaddle = Paddle((WIDTH / 2 - 40, 0))
 ball = Ball()
-
+leftScore = Scoreboard((-70, 400))
+rightScore = Scoreboard((70, 400))
 
 # Middle line of screen.
 middleLine = Turtle()
@@ -40,6 +37,7 @@ for _ in range(18):
   middleLine.penup()
   middleLine.forward(30)
 
+# Controls.
 screen.listen()
 screen.onkey(leftPaddle.up, "w")
 screen.onkey(leftPaddle.down, "s")
@@ -50,12 +48,32 @@ gameOn = True
 while gameOn:
   screen.update()
   ball.moveBall()
-  time.sleep(0.08)
+  time.sleep(0.01)
 
-  # Detect collision with paddle.
-  ball.position()
-
-  if ball.distance(leftPaddle.xcor() + 10, leftPaddle.ycor()) < 35 or ball.distance(rightPaddle.xcor() - 35, rightPaddle.ycor()) < 40:
+# Detect collision with paddle.
+  if abs(ball.xcor() - leftPaddle.xcor()) <= 23 and abs(ball.ycor() - leftPaddle.ycor()) <= 55:
     ball.bounce()
+
+  if abs(ball.xcor() - rightPaddle.xcor()) <= 23 and abs(ball.ycor() - rightPaddle.ycor()) <= 55:
+    ball.bounce()
+  
+# Detect if ball hit goal.
+  if ball.xcor() <= -600:
+    rightScore.increaseScore()
+    ball.goto(0,0)
+    leftPaddle.goto(WIDTH / -2 + 40, 0)
+    rightPaddle.goto(WIDTH / 2 - 40, 0)
+
+  if ball.xcor() >= 600:
+    leftScore.increaseScore()
+    ball.goto(0,0)
+    leftPaddle.goto(WIDTH / -2 + 40, 0)
+    rightPaddle.goto(WIDTH / 2 - 40, 0)
+  
+# End Game.
+  if leftScore.score == 5 or rightScore.score == 5:
+    gameover.updateScoreboard()
+    gameOn = False
+
 # KEEP AT BOTTOM--------
 screen.exitonclick()

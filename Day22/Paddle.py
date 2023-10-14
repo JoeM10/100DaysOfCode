@@ -4,7 +4,6 @@ UP = 90
 DOWN = 270
 SPEED = 40
 
-
 class Paddle(Turtle):
   
   def __init__(self, position):
@@ -23,4 +22,3 @@ class Paddle(Turtle):
   def down(self):
     if self.ycor() > -390:
       self.backward(SPEED)
-
