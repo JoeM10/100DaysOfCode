@@ -48,13 +48,13 @@ gameOn = True
 while gameOn:
   screen.update()
   ball.moveBall()
-  time.sleep(0.01)
+  time.sleep(0.012)
 
 # Detect collision with paddle.
-  if abs(ball.xcor() - leftPaddle.xcor()) <= 23 and abs(ball.ycor() - leftPaddle.ycor()) <= 55:
+  if ball.xcor() <= -540 and abs(ball.ycor() - leftPaddle.ycor()) <= 55:
     ball.bounce()
 
-  if abs(ball.xcor() - rightPaddle.xcor()) <= 23 and abs(ball.ycor() - rightPaddle.ycor()) <= 55:
+  if ball.xcor() >= 540 and abs(ball.ycor() - rightPaddle.ycor()) <= 55:
     ball.bounce()
   
 # Detect if ball hit goal.
