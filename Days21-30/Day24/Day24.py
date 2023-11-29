@@ -11,6 +11,10 @@ import os
 # # with open("myFile.txt") as file:
 # #   contents = file.read()
 
+# # The function .readlines() will turn each line in a file into a item in a list.
+# # with open("myFile.txt") as file:
+# #   contents = file.readlines()
+
 # # Append something to a file.
 # with open(f"{currentDirectory}\\myFile.txt", mode="a") as file:
 #   file.write("\nNew text.")
@@ -29,7 +33,7 @@ import os
 #   contents = file.read()
 #   print(contents)
 
-#TODO: Create a letter using starting_letter.txt 
+#ToDo: Create a letter using starting_letter.txt 
 #for each name in invited_names.txt
 #Replace the [name] placeholder with the actual name.
 #Save the letters in the folder "ReadyToSend".

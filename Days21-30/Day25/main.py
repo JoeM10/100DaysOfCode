@@ -28,8 +28,7 @@ while gameOn:
     stateCoordinate = ()
 
     if answerState == "Exit":
-      for state in usedStatesList:
-        stateNames.remove(state)
+      [stateNames.remove(state) for state in usedStatesList]
       stateDataFrame = pandas.DataFrame(stateNames)
       stateDataFrame.to_csv(f"{scriptDirectory}\\StatesToLearn.csv")
       turtle.bye()
