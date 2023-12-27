@@ -35,11 +35,10 @@ index = 0
 if dayOfMonth in birthdaysDict["day"].values() and monthOfYear in birthdaysDict["month"].values():
   index = birthdaysFile[birthdaysFile['month'] == monthOfYear].index.values[0] and birthdaysFile[birthdaysFile['day'] == dayOfMonth].index.values[0]
   print("Good")
-  replaceName = "[NAME]"
   bDayName = birthdaysDict["name"][index]
 
   with open(f"{scriptDirectory}\\letter_templates\\letter_{random.randint(1,3)}.txt") as bDayLetterFile:
-    bDayLetterContents = bDayLetterFile.read().replace(replaceName, bDayName)
+    bDayLetterContents = bDayLetterFile.read().replace("[NAME]", bDayName)
   
   with smtplib.SMTP(gmail, port=587) as connection:
     connection.starttls()

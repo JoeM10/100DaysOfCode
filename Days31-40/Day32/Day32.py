@@ -43,5 +43,5 @@ if dayOfWeek == 4:
   with smtplib.SMTP(gmail, port=587) as connection:
     connection.starttls()
     connection.login(user=myEmail, password=appPassword)
-    connection.sendmail(from_addr=myEmail, to_addrs=testEmail,
+    connection.sendmail(from_addr=myEmail, to_addrs=testEmail, 
                         msg=f"Subject:Motivational Quote of the Day.\n\n{quoteOfTheDay}")
