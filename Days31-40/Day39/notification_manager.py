@@ -1,6 +1,5 @@
 import smtplib
 import os
-from flight_search import FlightSearch
 
 #This class is responsible for sending notifications with the deal flight details.
 

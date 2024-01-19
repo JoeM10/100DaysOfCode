@@ -26,5 +26,5 @@ class DataManager:
 
     sheetyPutResponse = requests.put(url=f"{SHEETY_PRICES_ENDPOINT}/{id}", json=putSheetyData, auth=SHEETY_AUTH)
     sheetyPutResponse.raise_for_status()
-    print("response.status_code=", sheetyPutResponse.status_code)
-    print("response.text=", sheetyPutResponse.text)
+    # print("response.status_code=", sheetyPutResponse.status_code)
+    # print("response.text=", sheetyPutResponse.text)

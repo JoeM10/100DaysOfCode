@@ -36,7 +36,6 @@ class FlightSearch:
     tequilaJsonData = tequilaGetResponse.json()
     tequilaData = tequilaJsonData["data"]
     lowestFare = 10000
-    print(len(tequilaData))
     for flight in range(len(tequilaData)):
       if tequilaData[flight]["price"] < lowestFare:
         lowestFare = int(tequilaData[flight]["price"])

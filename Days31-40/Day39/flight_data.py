@@ -20,7 +20,6 @@ class FlightData:
     for id in range(len(gSheetData)):
       self.flightSearch.getSearchData(str(gSheetData[id]["iataCode"]))
     lowPriceList = self.flightSearch.lowestPriceList
-    print(self.flightSearch.travelDates)
 
     for price in range(len(self.gSheetPrices)):
       if self.gSheetPrices[price] > lowPriceList[price]:
