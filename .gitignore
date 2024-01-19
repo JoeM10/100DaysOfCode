@@ -6,3 +6,4 @@
 *.vs*
 *.DS_Store*
 *data.cpython-311.pyc*
+*/TEST*
