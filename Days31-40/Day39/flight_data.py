@@ -20,15 +20,13 @@ class FlightData:
     for id in range(len(gSheetData)):
       self.flightSearch.getSearchData(str(gSheetData[id]["iataCode"]))
     lowPriceList = self.flightSearch.lowestPriceList
+    print(self.flightSearch.travelDates)
 
     for price in range(len(self.gSheetPrices)):
       if self.gSheetPrices[price] > lowPriceList[price]:
-        self.notificationManager.sendEmail(city=gSheetData[price]["city"], iata=gSheetData[price]["iataCode"], price=lowPriceList[price], flightSearchData=)
+        self.notificationManager.sendEmail(city=gSheetData[price]["city"], iata=gSheetData[price]["iataCode"], price=lowPriceList[price], flightSearchData=self.flightSearch.travelDates)
 
         self.dataManager.putSheetData(newLow=lowPriceList[price], id=gSheetData[price]["id"])
       
       else:
         self.dataManager.putSheetData(newLow=lowPriceList[price], id=gSheetData[price]["id"])
-
-  def getFlightSearchData(self):
-    return self.flightSearch

@@ -16,8 +16,9 @@ class NotificationManager:
     self.fromEmail = "johnerr370@gmail.com"
     self.toEmail = "garrhj2464@outlook.com"
   
-  def sendEmail(self, city:str, iata:str, price:int, flightSearchData:FlightSearch):
-
+  def sendEmail(self, city:str, iata:str, price:int, flightSearchData):
+    departure = flightSearchData[f"{iata}_departure"]
+    arrival = flightSearchData[f"{iata}_arrival"]
     with smtplib.SMTP(self.gmail, port=self.PORT_NUMBER) as connection:
       connection.starttls()
       connection.login(user=self.fromEmail, password=self.APP_PASSWORD)

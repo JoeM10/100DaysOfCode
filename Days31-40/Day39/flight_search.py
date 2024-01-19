@@ -2,7 +2,6 @@
 import os
 import requests
 from datetime import datetime, timedelta
-from data_manager import DataManager
 # ---------- CONSTANTS ---------- #
 TEQUILA_FLIGHT_API_KEY = str(os.environ.get("TEQUILA_FLIGHT_API_KEY"))
 TEQUILA_ENDPOINT =  "https://api.tequila.kiwi.com/v2/search"
@@ -36,10 +35,18 @@ class FlightSearch:
 
     tequilaJsonData = tequilaGetResponse.json()
     tequilaData = tequilaJsonData["data"]
-    lowestFare = tequilaData[0]["price"]
+    lowestFare = 10000
+    print(len(tequilaData))
     for flight in range(len(tequilaData)):
       if tequilaData[flight]["price"] < lowestFare:
         lowestFare = int(tequilaData[flight]["price"])
-        self.travelDates.update({f"{iata}_departure":tequilaData[flight]["local_departure"].strftime("%d/%m/%Y"),
-                                 f"{iata}_arrival":tequilaData[flight]["local_arrival"].strftime("%d/%m/%Y")})
+
+        departure_datetime = datetime.strptime(tequilaData[flight]["local_departure"], "%Y-%m-%dT%H:%M:%S.%fZ")
+        formatted_departure = departure_datetime.strftime("%d/%m/%Y")
+
+        arrival_datetime = datetime.strptime(tequilaData[flight]["local_arrival"], "%Y-%m-%dT%H:%M:%S.%fZ")
+        formatted_arrival = arrival_datetime.strftime("%d/%m/%Y")
+
+        self.travelDates.update({f"{iata}_departure":formatted_departure,
+                                 f"{iata}_arrival":formatted_arrival})
     self.lowestPriceList.append(lowestFare)
