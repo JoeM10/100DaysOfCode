@@ -7,7 +7,7 @@ choices = {
   "row3" : [" ", " ", " "],
 }
 
-
+# Whoa
 def winCondition() -> bool:
   first = choices["row1"]
   second = choices["row2"]
@@ -84,21 +84,16 @@ def welcome():
       askToPlay = input("Please type 'Y' or 'N' : ").upper()
 
 
+# Constructors for the board
 def row1():
   row = f" {choices['row1'][0]} | {choices['row1'][1]} | {choices['row1'][2]} "
   return row
-
-
 def row2():
   row = f" {choices['row2'][0]} | {choices['row2'][1]} | {choices['row2'][2]} "
   return row
-
-
 def row3():
   row = f" {choices['row3'][0]} | {choices['row3'][1]} | {choices['row3'][2]} "
   return row
-
-
 def board() -> bool:
   lines = "-----------"
 
@@ -111,6 +106,7 @@ def board() -> bool:
   return winCondition()
 
 
+# Turn handling
 def playerTurn():
   print("Please type the 'row#' and 'column#' where you want to play your piece.")
   print("EXAMPLE: row1 column2")
@@ -149,19 +145,13 @@ def cpuTurn():
       choices[row][column] = "O"
       choosing = False
 
+if __name__ == "__main__":
+  while True:
+    welcome()
 
-while True:
-  welcome()
+    while board() == False:
+      playerTurn()
 
-  while board() == False:
-    playerTurn()
-
-    if winCondition() == False:
-      board()
-      cpuTurn()
-
-  choices = {
-  "row1" : [" ", " ", " "],
-  "row2" : [" ", " ", " "],
-  "row3" : [" ", " ", " "],
-}
+      if winCondition() == False:
+        board()
+        cpuTurn()
