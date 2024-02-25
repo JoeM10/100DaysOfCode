@@ -70,10 +70,9 @@ def winCondition() -> bool:
 
 
 def welcome():
-  askToPlay = input("Would you like to play Tic-Tac-Toe? 'Y' or 'N' : ").upper()
+  askToPlay = input("Welcome, would you like to play Tic-Tac-Toe? 'Y' or 'N' : ").upper()
   while True:
     if askToPlay == "Y":
-      print("Welcome to Tic-Tac-Toe!\n")
       return False
   
     elif askToPlay == "N":
